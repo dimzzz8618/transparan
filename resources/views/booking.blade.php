@@ -321,7 +321,7 @@
                 return;
             }
             
-            // Konfirmasi pemesanan
+            // Ko`nfirmasi pemesanan
             if (!confirm(`Konfirmasi pemesanan untuk ${passengers} penumpang?\nData akan diproses dan tidak dapat diubah.`)) {
                 e.preventDefault();
             }

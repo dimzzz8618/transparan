@@ -38,6 +38,7 @@
             display: flex;
             list-style: none;
             gap: 1.5rem;
+            align-items: center;
         }
         
         nav a {
@@ -67,6 +68,16 @@
         
         nav button:hover {
             background-color: rgba(255,255,255,0.2);
+        }
+        
+        .btn-warning {
+            background-color: #ffc107;
+            color: #212529 !important;
+            font-weight: 600;
+        }
+        
+        .btn-warning:hover {
+            background-color: #e0a800 !important;
         }
         
         /* Hero Section */
@@ -310,6 +321,10 @@
             <li><a href="/contact">Kontak</a></li>
 
             @auth
+                @if (Auth::user()->role === 'admin')
+                    <li><a href="{{ route('admin') }}" class="btn-warning">Admin</a></li>
+                @endif
+                
                 <li>
                     <form method="POST" action="{{ route('logout') }}" style="display:inline;">
                         @csrf

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Booking;
+use App\Http\Controllers\FlightController;
 
 
 // === ROUTE FRONTEND ===
@@ -81,3 +82,12 @@ Route::get('/dashboard', function () {
     $bookings = Booking::where('email', Auth::user()->email)->get();
     return view('dashboard', compact('bookings'));
 })->middleware('auth');
+
+Route::middleware(['auth', 'is_admin'])->group(function () {
+    Route::get('/admin', [FlightController::class, 'index'])->name('admin');
+    Route::get('/flights/create', [FlightController::class, 'create'])->name('flights.create');
+    Route::post('/flights', [FlightController::class, 'store'])->name('flights.store');
+    Route::get('/flights/{flight}/edit', [FlightController::class, 'edit'])->name('flights.edit');
+    Route::put('/flights/{flight}', [FlightController::class, 'update'])->name('flights.update');
+    Route::delete('/flights/{flight}', [FlightController::class, 'destroy'])->name('flights.destroy');
+});

@@ -1,10 +1,17 @@
 @extends('layouts.app')
 
-@section('content')
+@section(section: 'content')
 <section class="hero">
     <h2>Selamat Datang di Pasundan Airlines</h2>
     <p>Temukan penerbangan terbaik dengan harga terjangkau ke seluruh Indonesia!</p>
     <a href="/search" class="btn">Cari Tiket Sekarang</a>
+
+    @auth
+    <a href="/admin" class="btn btn-admin" style="margin-left: 10px; background-color: #ff8800; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
+        ✈️ Halaman Admin
+    </a>
+    @endauth
+
 </section>
 
 <section>

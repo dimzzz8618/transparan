@@ -263,7 +263,7 @@
                         <td>{{ $b->created_at->format('d M Y') }}</td>
                         <td>
                             <span class="status-badge status-completed">Selesai</span>
-                        </td>
+                         </td>
                     </tr>
                     @endforeach
                 </tbody>
